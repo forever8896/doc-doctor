@@ -1,0 +1,878 @@
+[
+ {
+  "url": "https://docs.boat.dev/account",
+  "title": "Accounts and sign-in"
+ },
+ {
+  "url": "https://docs.boat.dev/agent-auth",
+  "title": "Sign up from an agent"
+ },
+ {
+  "url": "https://docs.boat.dev/ai-credentials",
+  "title": "AI credentials and proxy"
+ },
+ {
+  "url": "https://docs.boat.dev/ai-tools",
+  "title": "Use boat from your coding agent"
+ },
+ {
+  "url": "https://docs.boat.dev/api-keys",
+  "title": "API keys and tokens"
+ },
+ {
+  "url": "https://docs.boat.dev/api-keys/create-and-list",
+  "title": "Create and list keys"
+ },
+ {
+  "url": "https://docs.boat.dev/api-keys/scopes",
+  "title": "Scopes"
+ },
+ {
+  "url": "https://docs.boat.dev/api-keys/store-rotate-revoke",
+  "title": "Store, rotate and revoke"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/create-scoped-api-key",
+  "title": "Create a scoped API key"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/create-webhook",
+  "title": "Create webhook"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/delete-webhook",
+  "title": "Delete webhook"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/get-account-data-retention-policy",
+  "title": "Get account data-retention policy"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/get-api-key-usage",
+  "title": "Get API key usage"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/get-boat-limits",
+  "title": "Get account limits"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/get-boat-secrets-setup",
+  "title": "Get account secrets (legacy)"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/get-current-boat-user",
+  "title": "Get current user"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/get-deletion-operation",
+  "title": "Get deletion operation"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/get-opentelemetry-export",
+  "title": "Get OpenTelemetry export"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/get-webhook",
+  "title": "Get webhook"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/list-api-keys",
+  "title": "List API keys"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/list-github-repositories-available-to-sandbox",
+  "title": "List GitHub repositories"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/list-organizations",
+  "title": "List organizations"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/list-webhooks",
+  "title": "List webhooks"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/remove-opentelemetry-export",
+  "title": "Remove OpenTelemetry export"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/revoke-api-key",
+  "title": "Revoke an API key"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/rotate-api-key",
+  "title": "Rotate an API key"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/rotate-webhook-signing-secret",
+  "title": "Rotate webhook signing secret"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/select-repository-for-sandboxes",
+  "title": "Select a repository"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/set-active-organization",
+  "title": "Set the active organization"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/set-opentelemetry-export",
+  "title": "Set OpenTelemetry export"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/update-account-data-retention-policy",
+  "title": "Update account data-retention policy"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/update-boat-secrets-setup",
+  "title": "Update account secrets (legacy)"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/update-organization",
+  "title": "Update organization settings"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/account/update-webhook",
+  "title": "Update webhook"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/attach-command",
+  "title": "Attach to a detached command"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/configure-sandbox-ssh-key",
+  "title": "Add an SSH key"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/create-download-url",
+  "title": "Get a download URL for a sandbox file"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/create-sandbox-folder",
+  "title": "Create a directory"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/create-upload-url",
+  "title": "Get an upload URL for a sandbox file"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/delete-sandbox-file",
+  "title": "Delete a file"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/download-sandbox-artifact",
+  "title": "Download a file"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/execute-sandbox-command",
+  "title": "Run a command"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/expose-a-port",
+  "title": "Expose a port on a public URL"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/find-in-sandbox-files",
+  "title": "Find text in files"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/get-command",
+  "title": "Get a command from the history"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/get-command-status",
+  "title": "Get command status"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/get-desktop-streaming-url",
+  "title": "Get the desktop URL"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/get-prompt-run-status",
+  "title": "Get prompt run status"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/get-sandbox-file-info",
+  "title": "Get file details"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/interrupt-running-agent-work",
+  "title": "Interrupt running work"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/list-command-history",
+  "title": "List the command history"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/list-sandbox-conversations",
+  "title": "List conversations"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/list-sandbox-events",
+  "title": "List sandbox events"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/list-sandbox-files",
+  "title": "List a directory"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/list-sandbox-processes",
+  "title": "List sandbox processes"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/move-sandbox-file",
+  "title": "Move or rename a file"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/prompt-sandbox-agent",
+  "title": "Prompt the agent"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/read-command-logs",
+  "title": "Read command logs"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/read-sandbox-file",
+  "title": "Read a file"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/replace-in-sandbox-files",
+  "title": "Replace text in files"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/search-sandbox-files",
+  "title": "Search files by name"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/set-sandbox-file-permissions",
+  "title": "Set file permissions"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/steer-a-running-turn",
+  "title": "Steer a running turn (API)"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/stop-command",
+  "title": "Stop a detached command"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/agent/write-sandbox-file",
+  "title": "Write a file"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/add-credential-account",
+  "title": "Add another API key to a credential"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/block-or-unblock-sandbox-ai-access",
+  "title": "Block or unblock sandbox AI access"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/create-credential-profile",
+  "title": "Create a credential profile"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/delete-credential-profile",
+  "title": "Delete a credential profile"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/forget-credential-account",
+  "title": "Forget an account of a credential"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/get-ai-credentials-proxy",
+  "title": "Get AI credentials proxy"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/get-ai-usage",
+  "title": "Get AI usage"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/get-sandbox-ai-usage",
+  "title": "Get sandbox AI usage"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/list-credential-accounts",
+  "title": "List the accounts of a credential"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/list-credential-profiles",
+  "title": "List credential profiles"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/remove-credential-profile-credential",
+  "title": "Remove a credential profile credential"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/remove-custom-api",
+  "title": "Remove a custom API"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/set-credential-profile-api-key",
+  "title": "Set a credential profile API key"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/set-custom-api",
+  "title": "Set a custom API"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/switch-credential-account",
+  "title": "Switch a credential to another account"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/turn-the-ai-credentials-proxy-on-or-off",
+  "title": "Turn the AI credentials proxy on or off"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ai-credentials/update-credential-profile",
+  "title": "Update a credential profile"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ci/connect-ci-github",
+  "title": "Connect GitHub for CI"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ci/get-ci-job",
+  "title": "Get CI job"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ci/get-ci-job-log",
+  "title": "Get CI job log"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ci/get-ci-overview",
+  "title": "Get CI overview"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/ci/set-ci-public-repos",
+  "title": "Set CI public repositories"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/environments/add-environment-repo",
+  "title": "Add environment repository"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/environments/create-sandbox-environment",
+  "title": "Create an environment"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/environments/delete-environment-repo",
+  "title": "Remove environment repository"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/environments/delete-environment-secret-file",
+  "title": "Remove environment secret file"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/environments/delete-environment-var",
+  "title": "Remove environment variable"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/environments/delete-sandbox-environment",
+  "title": "Delete an environment"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/environments/list-sandbox-environments",
+  "title": "List environments"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/environments/set-environment-secret-file",
+  "title": "Write environment secret file"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/environments/set-environment-var",
+  "title": "Set environment variable"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/environments/update-sandbox-environment",
+  "title": "Update an environment"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/environments/upgrade-sandbox-environment",
+  "title": "Upgrade sandboxes to the latest environment version"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/sandboxes/create-sandbox",
+  "title": "Create sandbox"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/sandboxes/fork-sandbox",
+  "title": "Fork sandbox"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/sandboxes/get-sandbox",
+  "title": "Get sandbox"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/sandboxes/get-sandbox-usage",
+  "title": "Get sandbox usage"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/sandboxes/get-stop",
+  "title": "Get a stop"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/sandboxes/list-sandboxes",
+  "title": "List sandboxes"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/sandboxes/permanently-delete-sandbox-data",
+  "title": "Delete sandbox"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/sandboxes/recover-sandbox",
+  "title": "Recover sandbox"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/sandboxes/resume-sandbox",
+  "title": "Resume sandbox"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/sandboxes/share-sandbox",
+  "title": "Share sandbox with the organization"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/sandboxes/stop-and-archive-sandbox",
+  "title": "Stop sandbox"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/sandboxes/unshare-sandbox",
+  "title": "Make an organization sandbox private"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/sandboxes/update-sandbox",
+  "title": "Update sandbox"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/snapshots/create-snapshot-share",
+  "title": "Share a saved snapshot"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/snapshots/delete-sandbox-snapshots",
+  "title": "Delete all snapshots of a sandbox"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/snapshots/delete-saved-snapshot",
+  "title": "Delete a saved snapshot"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/snapshots/get-latest-sandbox-snapshot",
+  "title": "Get the latest snapshot of a sandbox"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/snapshots/get-saved-snapshot",
+  "title": "Get a saved snapshot"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/snapshots/get-snapshot-download",
+  "title": "Get snapshot download"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/snapshots/get-snapshot-file",
+  "title": "Download a file or folder from a snapshot"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/snapshots/get-snapshot-tree",
+  "title": "Get snapshot file tree"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/snapshots/list-sandbox-snapshots",
+  "title": "List snapshots of a sandbox"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/snapshots/list-saved-snapshots",
+  "title": "List saved snapshots"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/snapshots/list-snapshot-shares",
+  "title": "List share codes of a saved snapshot"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/snapshots/list-snapshots",
+  "title": "List snapshots"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/snapshots/permanently-delete-snapshot-data",
+  "title": "Delete snapshot"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/snapshots/revoke-snapshot-share",
+  "title": "Revoke a share code"
+ },
+ {
+  "url": "https://docs.boat.dev/api/reference/snapshots/save-saved-snapshot",
+  "title": "Save a saved snapshot"
+ },
+ {
+  "url": "https://docs.boat.dev/api/v1",
+  "title": "API overview"
+ },
+ {
+  "url": "https://docs.boat.dev/billing",
+  "title": "Plan, wallet and running out"
+ },
+ {
+  "url": "https://docs.boat.dev/billing/plan-changes",
+  "title": "Card, invoices and plan changes"
+ },
+ {
+  "url": "https://docs.boat.dev/ci",
+  "title": "CI with boat"
+ },
+ {
+  "url": "https://docs.boat.dev/cli-reference",
+  "title": "CLI reference"
+ },
+ {
+  "url": "https://docs.boat.dev/compliance",
+  "title": "Compliance and uptime"
+ },
+ {
+  "url": "https://docs.boat.dev/concepts",
+  "title": "Concepts"
+ },
+ {
+  "url": "https://docs.boat.dev/data-retention",
+  "title": "Data retention and deletion"
+ },
+ {
+  "url": "https://docs.boat.dev/data-retention/close-account",
+  "title": "Close your account and GDPR erasure"
+ },
+ {
+  "url": "https://docs.boat.dev/data-retention/delete",
+  "title": "Delete a sandbox or snapshot"
+ },
+ {
+  "url": "https://docs.boat.dev/data-retention/snapshots-and-monitoring-off",
+  "title": "Snapshots off and monitoring off"
+ },
+ {
+  "url": "https://docs.boat.dev/data-retention/zero-data-retention",
+  "title": "Zero data retention"
+ },
+ {
+  "url": "https://docs.boat.dev/desktop-streaming",
+  "title": "Desktop streaming"
+ },
+ {
+  "url": "https://docs.boat.dev/desktop-streaming/background",
+  "title": "Desktop background"
+ },
+ {
+  "url": "https://docs.boat.dev/desktop-streaming/browser-only",
+  "title": "Browser-only view"
+ },
+ {
+  "url": "https://docs.boat.dev/desktop-streaming/drive-and-record",
+  "title": "Drive and record the desktop"
+ },
+ {
+  "url": "https://docs.boat.dev/desktop-streaming/urls-and-security",
+  "title": "Embed the desktop and secure its URL"
+ },
+ {
+  "url": "https://docs.boat.dev/environments",
+  "title": "Environments"
+ },
+ {
+  "url": "https://docs.boat.dev/environments/access",
+  "title": "Access and credentials"
+ },
+ {
+  "url": "https://docs.boat.dev/environments/choose",
+  "title": "Environment, setup script or saved snapshot?"
+ },
+ {
+  "url": "https://docs.boat.dev/environments/manage",
+  "title": "Manage environments"
+ },
+ {
+  "url": "https://docs.boat.dev/environments/private-registries",
+  "title": "Private registries"
+ },
+ {
+  "url": "https://docs.boat.dev/environments/repositories",
+  "title": "Repositories"
+ },
+ {
+  "url": "https://docs.boat.dev/environments/secrets",
+  "title": "Secrets, env vars and .env files"
+ },
+ {
+  "url": "https://docs.boat.dev/environments/versions",
+  "title": "Versions and upgrades"
+ },
+ {
+  "url": "https://docs.boat.dev/evals",
+  "title": "Evals and RL environments"
+ },
+ {
+  "url": "https://docs.boat.dev/faq",
+  "title": "FAQ"
+ },
+ {
+  "url": "https://docs.boat.dev/free-trial",
+  "title": "Free trial"
+ },
+ {
+  "url": "https://docs.boat.dev/hosting",
+  "title": "Public URLs"
+ },
+ {
+  "url": "https://docs.boat.dev/hosting/firewall",
+  "title": "Firewall rules and outbound traffic"
+ },
+ {
+  "url": "https://docs.boat.dev/hosting/host-cli",
+  "title": "Expose a port: host commands"
+ },
+ {
+  "url": "https://docs.boat.dev/hosting/how-it-works",
+  "title": "How public URLs work"
+ },
+ {
+  "url": "https://docs.boat.dev/integrated-agents",
+  "title": "Integrated agents"
+ },
+ {
+  "url": "https://docs.boat.dev/integrated-agents/computer-use",
+  "title": "Computer use"
+ },
+ {
+  "url": "https://docs.boat.dev/integrated-agents/conversations",
+  "title": "Conversations"
+ },
+ {
+  "url": "https://docs.boat.dev/integrated-agents/customize",
+  "title": "Customize the harness: rules, MCP, skills"
+ },
+ {
+  "url": "https://docs.boat.dev/integrated-agents/harnesses-and-models",
+  "title": "Claude Code, Codex and other harnesses"
+ },
+ {
+  "url": "https://docs.boat.dev/integrated-agents/keys",
+  "title": "Keys and subscriptions"
+ },
+ {
+  "url": "https://docs.boat.dev/integrated-agents/steering",
+  "title": "Steer a running turn"
+ },
+ {
+  "url": "https://docs.boat.dev/integrations/agentenv",
+  "title": "AgentEnv"
+ },
+ {
+  "url": "https://docs.boat.dev/integrations/eve",
+  "title": "Eve adapter"
+ },
+ {
+  "url": "https://docs.boat.dev/integrations/harbor",
+  "title": "Harbor adapter"
+ },
+ {
+  "url": "https://docs.boat.dev/limits",
+  "title": "Limits and errors"
+ },
+ {
+  "url": "https://docs.boat.dev/long-running-tasks",
+  "title": "Keep a sandbox running"
+ },
+ {
+  "url": "https://docs.boat.dev/long-running-tasks/always-on-services",
+  "title": "Always-on services, 24/7"
+ },
+ {
+  "url": "https://docs.boat.dev/long-running-tasks/auto-stop",
+  "title": "Auto-stop and keep alive"
+ },
+ {
+  "url": "https://docs.boat.dev/long-running-tasks/background-commands",
+  "title": "Background commands"
+ },
+ {
+  "url": "https://docs.boat.dev/long-running-tasks/command-history",
+  "title": "Command history and logs"
+ },
+ {
+  "url": "https://docs.boat.dev/machines",
+  "title": "Sandbox sizes: CPU, memory, disk"
+ },
+ {
+  "url": "https://docs.boat.dev/machines/change-size",
+  "title": "Change size"
+ },
+ {
+  "url": "https://docs.boat.dev/machines/fail-fast",
+  "title": "Fail fast when no machine is free"
+ },
+ {
+  "url": "https://docs.boat.dev/machines/tools",
+  "title": "Base image and pre-installed tools"
+ },
+ {
+  "url": "https://docs.boat.dev/machines/virtualization",
+  "title": "Virtualization: KVM, Firecracker, Android"
+ },
+ {
+  "url": "https://docs.boat.dev/migrating-from-box",
+  "title": "Migrating from Box"
+ },
+ {
+  "url": "https://docs.boat.dev/migrating-from-box/renamed-names",
+  "title": "Every renamed name"
+ },
+ {
+  "url": "https://docs.boat.dev/migrating-from-box/steps",
+  "title": "Migration steps"
+ },
+ {
+  "url": "https://docs.boat.dev/opentelemetry",
+  "title": "OpenTelemetry"
+ },
+ {
+  "url": "https://docs.boat.dev/organizations",
+  "title": "Teams and organizations"
+ },
+ {
+  "url": "https://docs.boat.dev/organizations/active-wallet",
+  "title": "Which wallet a sandbox bills"
+ },
+ {
+  "url": "https://docs.boat.dev/organizations/move-personal-plan",
+  "title": "Move a personal plan in"
+ },
+ {
+  "url": "https://docs.boat.dev/organizations/seats-and-limits",
+  "title": "Seats, limits and caps"
+ },
+ {
+  "url": "https://docs.boat.dev/organizations/shared-sandboxes",
+  "title": "Shared sandboxes"
+ },
+ {
+  "url": "https://docs.boat.dev/platform-guide",
+  "title": "Sandbox per user: build a platform"
+ },
+ {
+  "url": "https://docs.boat.dev/platform-guide/agents",
+  "title": "Agents in your product"
+ },
+ {
+  "url": "https://docs.boat.dev/platform-guide/patterns",
+  "title": "Sandbox-per-user patterns"
+ },
+ {
+  "url": "https://docs.boat.dev/platform-guide/templates-and-sizing",
+  "title": "Templates and sizing"
+ },
+ {
+  "url": "https://docs.boat.dev/pricing",
+  "title": "Pricing"
+ },
+ {
+  "url": "https://docs.boat.dev/quickstart",
+  "title": "Quickstart"
+ },
+ {
+  "url": "https://docs.boat.dev/readiness",
+  "title": "Readiness and resume speed"
+ },
+ {
+  "url": "https://docs.boat.dev/recipes/agent-on-repo",
+  "title": "Run a coding agent on your repo"
+ },
+ {
+  "url": "https://docs.boat.dev/recipes/parallel-agents",
+  "title": "Run many agents in parallel"
+ },
+ {
+  "url": "https://docs.boat.dev/sdks/overview",
+  "title": "SDKs"
+ },
+ {
+  "url": "https://docs.boat.dev/sdks/python",
+  "title": "Python SDK"
+ },
+ {
+  "url": "https://docs.boat.dev/sdks/typescript",
+  "title": "TypeScript SDK"
+ },
+ {
+  "url": "https://docs.boat.dev/security",
+  "title": "Security and isolation"
+ },
+ {
+  "url": "https://docs.boat.dev/setup",
+  "title": "Setup scripts"
+ },
+ {
+  "url": "https://docs.boat.dev/snapshots",
+  "title": "Snapshots"
+ },
+ {
+  "url": "https://docs.boat.dev/snapshots/download-and-delete",
+  "title": "Download a snapshot"
+ },
+ {
+  "url": "https://docs.boat.dev/snapshots/resume-and-fork",
+  "title": "Resume, fork and restore"
+ },
+ {
+  "url": "https://docs.boat.dev/snapshots/stop",
+  "title": "Stop a sandbox"
+ },
+ {
+  "url": "https://docs.boat.dev/snapshots/templates",
+  "title": "Saved snapshots"
+ },
+ {
+  "url": "https://docs.boat.dev/snapshots/whats-saved",
+  "title": "What a snapshot saves"
+ },
+ {
+  "url": "https://docs.boat.dev/ssh-access",
+  "title": "SSH"
+ },
+ {
+  "url": "https://docs.boat.dev/ssh-access/editors",
+  "title": "VS Code, Cursor and SSH config"
+ },
+ {
+  "url": "https://docs.boat.dev/support",
+  "title": "Support"
+ },
+ {
+  "url": "https://docs.boat.dev/troubleshooting",
+  "title": "Troubleshooting"
+ },
+ {
+  "url": "https://docs.boat.dev/webhooks",
+  "title": "Webhooks"
+ },
+ {
+  "url": "https://docs.boat.dev/windows-apps",
+  "title": "Windows apps"
+ },
+ {
+  "url": "https://docs.boat.dev/windows-apps/agents-and-forks",
+  "title": "Agents and forks"
+ },
+ {
+  "url": "https://docs.boat.dev/windows-apps/install-wine",
+  "title": "Install Wine"
+ },
+ {
+  "url": "https://docs.boat.dev/windows-apps/run-apps",
+  "title": "Run an app"
+ },
+ {
+  "url": "https://docs.boat.dev/windows-apps/tested-apps",
+  "title": "Tested apps"
+ },
+ {
+  "url": "https://docs.boat.dev/windows-apps/troubleshooting",
+  "title": "Windows apps troubleshooting"
+ }
+]

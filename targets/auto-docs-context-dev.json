@@ -1,0 +1,79 @@
+{
+  "name": "context.dev",
+  "site": "https://docs.context.dev",
+  "slug": "docs-context-dev",
+  "auto": true,
+  "env": [
+    "CONTEXT_DEV_API_KEY"
+  ],
+  "apiPatterns": [
+    "api\\.context\\.dev",
+    "CONTEXT_DEV_API_KEY"
+  ],
+  "placeholderPatterns": [
+    "YOUR_[A-Z_]+",
+    "<[a-zA-Z_-]+>",
+    "\\b\\w+_(123|abc|xyz)\\w*",
+    "/v\\d/[\\w/-]*\\{[a-z_]+\\}",
+    "/path/to/",
+    "xxx+",
+    "\\b\\w+_\\.\\.\\."
+  ],
+  "defaultEstimate": 0,
+  "estimates": [],
+  "minGapMs": 6500,
+  "setup": {
+    "typescript": [
+      "npm install context.dev",
+      "npm install --save-dev tsx"
+    ],
+    "javascript": [
+      "npm install context.dev"
+    ],
+    "python": [
+      "python3 -m venv .venv",
+      "source .venv/bin/activate",
+      "python -m pip install context.dev"
+    ],
+    "ruby": [
+      "gem install context.dev"
+    ],
+    "go": [
+      "go mod init example.com/docs-sample",
+      "go get github.com/context-dot-dev/context-go-sdk/v2"
+    ],
+    "php": [
+      "composer require \"context-dev/context-dev-php:^2.37\" guzzlehttp/guzzle"
+    ]
+  },
+  "assumes": [
+    {
+      "command": "python",
+      "note": "Python 3 available as python",
+      "provide": "sudo ln -sf /usr/bin/python3 /usr/local/bin/python"
+    }
+  ],
+  "planPatterns": [
+    "paid plan",
+    "upgrade (your|to)",
+    "requires (a|the) .* plan"
+  ],
+  "vault": {
+    "provider": "1claw",
+    "binding": "docs-context-dev",
+    "host": "api.context.dev",
+    "header": "bearer"
+  },
+  "detected": {
+    "apiHost": "api.context.dev",
+    "envVar": "CONTEXT_DEV_API_KEY",
+    "header": "bearer",
+    "packages": {
+      "npm": "context.dev",
+      "pip": "context.dev",
+      "gem": "context.dev",
+      "go": "github.com/context-dot-dev/context-go-sdk/v2",
+      "composer": "composer require \"context-dev/context-dev-php:^2.37\" guzzlehttp/guzzle"
+    }
+  }
+}

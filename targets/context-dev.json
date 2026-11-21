@@ -1,0 +1,147 @@
+{
+  "name": "context.dev",
+  "site": "https://docs.context.dev",
+  "env": [
+    "CONTEXT_DEV_API_KEY"
+  ],
+  "apiPatterns": [
+    "api\\.context\\.dev",
+    "from [\"']context\\.dev[\"']",
+    "from context\\.dev import",
+    "require [\"']context_dev[\"']",
+    "context-go-sdk",
+    "use ContextDev\\\\",
+    "ContextDev\\\\Client"
+  ],
+  "placeholderPatterns": [
+    "\\b(mon|run|chg|bat|batch|req|pol|whd|user|prof)_(123|abc|xyz|\\.\\.\\.)\\w*",
+    "YOUR_[A-Z_]+",
+    "/v1/[\\w/-]*\\{[a-z_]+\\}",
+    "<[a-z_]+_id>",
+    "/path/to/",
+    "ctxt_secret_\\.\\.\\.",
+    "https://(your|my)[.-][\\w.-]+",
+    "your-(domain|app|server)",
+    "\\b(batch|mon|run|chg|crawl)_[0-9a-f]{4,}\\b"
+  ],
+  "createsPatterns": [
+    "monitors\\.create|Monitors\\.New|monitors->create|/v1/monitors[\"'\\s\\\\]",
+    "batch\\.submit|Batch\\.Submit|batch->submit|/batch/submit"
+  ],
+  "defaultEstimate": 1,
+  "estimates": [
+    [
+      "ultra",
+      100
+    ],
+    [
+      "people.{0,3}enrich",
+      20
+    ],
+    [
+      "people.{0,3}search",
+      10
+    ],
+    [
+      "answers",
+      10
+    ],
+    [
+      "brand.{0,3}retrieve|/brand/retrieve|brand->retrieve",
+      10
+    ],
+    [
+      "styleguide",
+      10
+    ],
+    [
+      "crawl",
+      10
+    ],
+    [
+      "batch.{0,3}submit",
+      5
+    ],
+    [
+      "monitors",
+      2
+    ],
+    [
+      "company.{0,3}search",
+      2
+    ]
+  ],
+  "setup": {
+    "typescript": [
+      "npm install context.dev",
+      "npm install --save-dev tsx"
+    ],
+    "javascript": [
+      "npm install context.dev"
+    ],
+    "python": [
+      "python3 -m venv .venv",
+      "source .venv/bin/activate",
+      "python -m pip install context.dev"
+    ],
+    "ruby": [
+      "gem install context.dev"
+    ],
+    "go": [
+      "go mod init example.com/context-quickstart",
+      "go get github.com/context-dot-dev/context-go-sdk/v2"
+    ],
+    "php": [
+      "composer require \"context-dev/context-dev-php:^2.37\" guzzlehttp/guzzle"
+    ]
+  },
+  "setupSource": "https://docs.context.dev/quickstart",
+  "usage": {
+    "url": "https://api.context.dev/v1/org/usage",
+    "remainingPath": "credits_remaining"
+  },
+  "cleanup": [
+    {
+      "name": "monitors",
+      "list": "https://api.context.dev/v1/monitors",
+      "items": "data",
+      "id": "id",
+      "delete": [
+        "DELETE",
+        "https://api.context.dev/v1/monitors/{id}"
+      ]
+    },
+    {
+      "name": "batches",
+      "list": "https://api.context.dev/v1/batch/list",
+      "items": "data",
+      "id": "id",
+      "delete": [
+        "POST",
+        "https://api.context.dev/v1/batch/{id}/cancel"
+      ]
+    }
+  ],
+  "skipPages": [
+    {
+      "match": "/integrations/",
+      "reason": "Third-party integration; needs that product's own account or CLI."
+    }
+  ],
+  "planPatterns": [
+    "paid plan",
+    "not enabled for your organization",
+    "upgrade (your|to)",
+    "PLAN_",
+    "requires (a|the) .* plan",
+    "not available on (your|the) .* plan"
+  ],
+  "interferencePatterns": [
+    "IDEMPOTENCY_KEY_CONFLICT"
+  ],
+  "vault": {
+    "provider": "1claw",
+    "binding": "context-dev",
+    "host": "api.context.dev"
+  }
+}

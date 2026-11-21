@@ -1,0 +1,9 @@
+{
+  "name": "doc-doctor",
+  "version": "0.1.0",
+  "description": "Run every code sample in a docs site on a fresh machine.",
+  "type": "module",
+  "bin": { "doc-doctor": "bin/doc-doctor.mjs" },
+  "license": "MIT",
+  "engines": { "node": ">=20" }
+}

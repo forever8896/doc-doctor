@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doc Doctor</title>
+<meta name="description" content="Doc Doctor runs every code sample in your docs on a fresh machine and shows you which ones still work. Open source, run with your own accounts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #111; --grey: #8c8c8c; --hair: #e5e5e5; --soft: #fafafa; --pass: #17a05d; --fail: #e5484d; --warn: #d98e04; --ease: cubic-bezier(.2,.8,.2,1); color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #fff; color: var(--ink); font: 400 16px/1.5 'Inter Tight', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: var(--ink); }
+  :focus-visible { outline: 1.5px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+  header { height: 64px; display: flex; align-items: center; justify-content: space-between; }
+  .brand { font-size: 17px; font-weight: 600; letter-spacing: -.02em; text-decoration: none; display: flex; align-items: center; gap: 9px; }
+  .brand i { width: 14px; height: 14px; border-radius: 4px; background: var(--pass); }
+  header nav a { font-size: 14px; color: var(--grey); text-decoration: none; } header nav a:hover { color: var(--ink); }
+  .hero { padding: 72px 0 56px; }
+  h1 { font-size: clamp(34px, 5.4vw, 64px); line-height: 1.02; letter-spacing: -.04em; font-weight: 600; margin: 0 0 18px; max-width: 15ch; }
+  .sub { color: var(--grey); font-size: 19px; max-width: 46ch; margin: 0 0 30px; }
+  .cmd { display: inline-flex; align-items: center; gap: 14px; height: 56px; padding: 0 10px 0 22px; border: 1px solid #e6e6e6; border-radius: 16px; font: 15px 'JetBrains Mono', monospace; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 10px 30px -18px rgba(0,0,0,.14); max-width: 100%; overflow-x: auto; white-space: nowrap; }
+  .cmd button { flex: none; font: 500 13px 'Inter Tight'; height: 36px; padding: 0 14px; border-radius: 999px; border: 0; background: var(--ink); color: #fff; cursor: pointer; transition: transform 160ms var(--ease); }
+  .cmd button:active { transform: scale(.96); }
+  .mine { font-size: 14px; color: var(--grey); margin: 14px 0 0; }
+  h2 { font-size: 26px; letter-spacing: -.03em; font-weight: 600; margin: 0 0 6px; }
+  .lead { color: var(--grey); margin: 0 0 26px; max-width: 60ch; }
+  .runs { display: grid; grid-template-columns: 1.35fr 1fr; gap: 18px; padding-bottom: 72px; }
+  .card { display: block; border: 1px solid var(--hair); border-radius: 18px; padding: 26px; text-decoration: none; transition: transform 220ms var(--ease), box-shadow 220ms, border-color 220ms; }
+  .card:hover { transform: translateY(-2px); border-color: #cfcfcf; box-shadow: 0 18px 44px -24px rgba(0,0,0,.25); }
+  .card .host { font: 13px 'JetBrains Mono', monospace; color: var(--grey); }
+  .card .big { font-size: 38px; line-height: 1.05; letter-spacing: -.035em; font-weight: 600; margin: 10px 0 14px; }
+  .card .big em { font-style: normal; color: var(--pass); }
+  .mini { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 16px; }
+  .mini i { width: 11px; height: 11px; border-radius: 3px; background: var(--pass); }
+  .mini i.f { background: var(--fail); } .mini i.w { background: var(--warn); } .mini i.e { background: #fff; box-shadow: inset 0 0 0 2px var(--warn); }
+  .card p { margin: 0; color: var(--grey); font-size: 15px; }
+  .card p b { color: var(--ink); font-weight: 500; }
+  .how { border-top: 1px solid var(--hair); padding: 56px 0 72px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; }
+  .how ol { margin: 0; padding: 0; list-style: none; counter-reset: s; }
+  .how li { counter-increment: s; padding: 14px 0 14px 44px; position: relative; border-top: 1px solid var(--hair); color: var(--grey); }
+  .how li:first-child { border-top: 0; padding-top: 0; } .how li:first-child::before { top: 0; }
+  .how li::before { content: counter(s); position: absolute; left: 0; top: 14px; width: 26px; height: 26px; border-radius: 50%; background: var(--soft); border: 1px solid var(--hair); display: grid; place-items: center; font: 500 13px 'JetBrains Mono'; color: var(--ink); }
+  .how li b { color: var(--ink); font-weight: 500; display: block; }
+  footer { border-top: 1px solid var(--hair); padding: 26px 0 40px; color: var(--grey); font-size: 14px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+  @media (max-width: 800px) { .runs, .how { grid-template-columns: 1fr; } .hero { padding: 44px 0 40px; } }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="./"><i></i>Doc Doctor</a>
+    <nav><a href="https://github.com/forever8896/doc-doctor">Source on GitHub</a></nav>
+  </header>
+
+  <section class="hero">
+    <h1>Do the examples in your docs still work?</h1>
+    <p class="sub">Doc Doctor runs every code sample in your docs on a fresh machine and records what happens.</p>
+    <div class="cmd"><span id="cmd">git clone https://github.com/forever8896/doc-doctor &amp;&amp; node doc-doctor/bin/doc-doctor.mjs serve</span><button type="button" id="copy">Copy</button></div>
+    <p class="mine">Open source. It runs on your own Boat account, and your API key stays with you.</p>
+  </section>
+
+  <h2>Two real runs</h2>
+  <p class="lead">Each report is the full result: one square per code sample, with a terminal recording you can replay.</p>
+  <section class="runs">
+    <a class="card" href="context-dev.html">
+      <span class="host">docs.context.dev</span>
+      <div class="big"><em>183</em> of 186 ran as published</div>
+      <div class="mini" id="m1"></div>
+      <p><b>Six languages, 42 machines.</b> One sample asks for a screenshot of a page that does not exist and then fails on the empty result.</p>
+    </a>
+    <a class="card" href="boat.html">
+      <span class="host">docs.boat.dev</span>
+      <div class="big"><em>17</em> of 19 ran as published</div>
+      <div class="mini" id="m2"></div>
+      <p><b>Read-only pass.</b> The Python install line is refused by the system Python on Ubuntu and Homebrew; a virtual environment fixes it.</p>
+    </a>
+  </section>
+
+  <section class="how">
+    <div>
+      <h2>How it works</h2>
+      <p class="lead">No test files to write. The docs are the test suite.</p>
+    </div>
+    <ol>
+      <li><b>Reads your docs</b>Every code block on every page. It works out your API host, key variable and SDK install commands from the samples.</li>
+      <li><b>Decides what a reader could run</b>Whole programs with nothing to fill in. Fragments, example output and anything that deletes are skipped, each with a reason.</li>
+      <li><b>Runs each sample on a new machine</b>One Boat sandbox per page. Your install commands first, then the sample exactly as written.</li>
+      <li><b>Keeps watching</b>When a page changes, only the new or edited samples run again.</li>
+      <li><b>Optional: keeps your key in a vault</b>With 1Claw, the machines call your API through the vault and never hold the key.</li>
+    </ol>
+  </section>
+
+  <footer><span>MIT licence. Built with Boat, context.dev and 1Claw.</span><a href="https://github.com/forever8896/doc-doctor">github.com/forever8896/doc-doctor</a></footer>
+</div>
+<script>
+  const fill = (id, pass, fail, warn, env) => { document.getElementById(id).innerHTML = '<i class="f"></i>'.repeat(fail) + '<i class="w"></i>'.repeat(warn) + '<i class="e"></i>'.repeat(env) + '<i></i>'.repeat(pass); };
+  fill('m1', 183, 3, 6, 0); fill('m2', 17, 2, 7, 3);
+  document.getElementById('copy').onclick = (e) => { navigator.clipboard?.writeText(document.getElementById('cmd').textContent); e.target.textContent = 'Copied'; setTimeout(() => (e.target.textContent = 'Copy'), 1400); };
+</script>
+</body>
+</html>

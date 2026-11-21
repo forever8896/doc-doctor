@@ -1,0 +1,36 @@
+{
+  "name": "Boat",
+  "site": "https://docs.boat.dev",
+  "env": ["BOAT_API_KEY"],
+  "extraEnv": { "BOAT_API_BASE": "https://boat.dev/api/v1" },
+  "readOnly": true,
+  "assumes": [
+    { "command": "python", "note": "Python 3 available as python, as on macOS with python.org or Windows installs", "provide": "sudo ln -sf /usr/bin/python3 /usr/local/bin/python" }
+  ],
+  "clientUse": "\\b(boat|sandbox)\\.\\w+\\(|\\b(sandbox_id|sandboxId)\\b",
+  "clientInit": "BoatApi\\(",
+  "skipPages": [{ "match": "/integrations/", "reason": "Third-party integration; needs that product's own account or CLI." }],
+  "minGapMs": 1500,
+  "apiPatterns": ["boat\\.dev/api", "BOAT_API_BASE", "@boatdev/sdk", "boat_sdk"],
+  "placeholderPatterns": [
+    "\\bbx_[a-z0-9_.]+",
+    "\\$\\{?(BOAT_ID|SANDBOX_ID|ID|id|SNAPSHOT_ID|KEY_ID|ORG|ENV_ID)\\b",
+    "boat_\\.\\.\\.",
+    "<[a-zA-Z_-]+>",
+    "\\b(snap|env|key|org|cmd|wh|conv)_[a-z0-9]*(123|abc|xyz)\\w*",
+    "YOUR_[A-Z_]+",
+    "acme|example\\.com/hook|my-project|web-stack|ci-base"
+  ],
+  "toolReasons": {
+    "boat": "A boat CLI command that acts on the signed-in account (creates sandboxes, keys or charges). Not run in this read-only pass."
+  },
+  "planPatterns": ["403", "forbidden", "api_key_action", "Response returned an error code"],
+  "refusedLabel": "refused by key scope",
+  "refusedReason": "This run used a read-only key, and the sample needs to create or change something. Not judged.",
+  "setup": {
+    "typescript": ["npm install @boatdev/sdk", "npm install --save-dev tsx"],
+    "javascript": ["npm install @boatdev/sdk"],
+    "python": ["python3 -m venv .venv", "source .venv/bin/activate", "python -m pip install boat-sdk"]
+  },
+  "setupSource": "https://docs.boat.dev/sdks/overview"
+}

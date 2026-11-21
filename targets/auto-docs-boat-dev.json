@@ -1,0 +1,69 @@
+{
+  "name": "boat.dev",
+  "site": "https://docs.boat.dev",
+  "slug": "docs-boat-dev",
+  "auto": true,
+  "env": [
+    "BOAT_API_KEY"
+  ],
+  "apiPatterns": [
+    "boat\\.dev",
+    "BOAT_API_KEY"
+  ],
+  "placeholderPatterns": [
+    "YOUR_[A-Z_]+",
+    "<[a-zA-Z_-]+>",
+    "\\b\\w+_(123|abc|xyz)\\w*",
+    "/v\\d/[\\w/-]*\\{[a-z_]+\\}",
+    "/path/to/",
+    "xxx+",
+    "\\b\\w+_\\.\\.\\."
+  ],
+  "defaultEstimate": 0,
+  "estimates": [],
+  "minGapMs": 6500,
+  "setup": {
+    "typescript": [
+      "npm install @boatdev/sdk",
+      "npm install --save-dev tsx"
+    ],
+    "javascript": [
+      "npm install @boatdev/sdk"
+    ],
+    "python": [
+      "python3 -m venv .venv",
+      "source .venv/bin/activate",
+      "python -m pip install boat-sdk"
+    ]
+  },
+  "assumes": [
+    {
+      "command": "python",
+      "note": "Python 3 available as python",
+      "provide": "sudo ln -sf /usr/bin/python3 /usr/local/bin/python"
+    }
+  ],
+  "planPatterns": [
+    "paid plan",
+    "upgrade (your|to)",
+    "requires (a|the) .* plan"
+  ],
+  "vault": {
+    "provider": "1claw",
+    "binding": "docs-boat-dev",
+    "host": "boat.dev",
+    "header": "bearer"
+  },
+  "detected": {
+    "apiHost": "boat.dev",
+    "envVar": "BOAT_API_KEY",
+    "header": "bearer",
+    "packages": {
+      "npm": "@boatdev/sdk",
+      "pip": "boat-sdk",
+      "gem": null,
+      "go": null,
+      "composer": null
+    }
+  }
+}

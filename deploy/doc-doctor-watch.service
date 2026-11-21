@@ -1,0 +1,16 @@
+# Keeps watching one docs site and reruns the samples that changed.
+#   cp deploy/doc-doctor-watch.service ~/.config/systemd/user/doc-doctor-watch@.service
+#   systemctl --user enable --now doc-doctor-watch@context-dev
+# The instance name (after @) is the target in targets/<name>.json.
+[Unit]
+Description=Doc Doctor: rerun changed docs samples for %i
+After=network-online.target
+
+[Service]
+WorkingDirectory=%h/doc-doctor
+ExecStart=/usr/bin/env node bin/doc-doctor.mjs watch %i --every=30m --budget=100
+Restart=on-failure
+RestartSec=60
+
+[Install]
+WantedBy=default.target

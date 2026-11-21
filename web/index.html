@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doc Doctor</title>
+<meta name="description" content="Doc Doctor: enter the address of your docs and watch every code sample run on a fresh machine.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/asciinema-player@3.8.0/dist/bundle/asciinema-player.css">
+<style>
+  :root {
+    --ink: #111; --grey: #8c8c8c; --grey-2: #b3b3b3; --hair: #e5e5e5; --hair-2: #ececec; --bg: #fff; --soft: #fafafa;
+    --pass: #17a05d; --fail: #e5484d; --warn: #d98e04;
+    --ease: cubic-bezier(.2, .8, .2, 1); --mono: 'JetBrains Mono', ui-monospace, monospace;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 15px/1.45 'Inter Tight', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: var(--ink); }
+  button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+  [hidden] { display: none !important; }
+  :focus-visible { outline: 1.5px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+
+  .topbar { position: fixed; inset: 0 0 auto; height: 64px; z-index: 20; display: flex; align-items: center; gap: 18px; padding: 0 28px; background: linear-gradient(var(--bg) 60%, transparent); }
+  .brand { font-size: 17px; font-weight: 600; letter-spacing: -.02em; text-decoration: none; display: flex; align-items: center; gap: 9px; }
+  .brand i { width: 14px; height: 14px; border-radius: 4px; background: var(--pass); display: block; }
+  .runlabel { font-size: 13px; color: var(--grey); opacity: 0; transition: opacity 300ms; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .is-run .runlabel { opacity: 1; }
+  .runlabel b { color: var(--ink); font-weight: 500; }
+
+  /* landing */
+  .landing { min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 20px 60px; transition: opacity 300ms, transform 500ms var(--ease); }
+  .is-run .landing { display: none; }
+  h1 { font-size: clamp(30px, 4.6vw, 52px); line-height: 1.04; letter-spacing: -.035em; font-weight: 600; margin: 0 0 14px; text-align: center; max-width: 16ch; }
+  .sub { color: var(--grey); font-size: 17px; margin: 0 0 34px; text-align: center; max-width: 44ch; }
+  .field { width: min(580px, 100%); }
+  .field-box { height: 64px; border-radius: 16px; border: 1px solid #e6e6e6; background: #fff; display: flex; align-items: center; padding: 0 12px 0 22px; gap: 2px; font-size: 18px; cursor: text;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 10px 30px -18px rgba(0,0,0,.14); transition: border-color 200ms, box-shadow 200ms, transform 200ms; }
+  .field-box:focus-within { border-color: #cfcfcf; transform: translateY(-1px); box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 18px 44px -18px rgba(0,0,0,.2); }
+  .prefix { color: var(--grey-2); user-select: none; }
+  .field-box input { flex: 1; min-width: 0; border: 0; outline: 0; background: none; font: inherit; color: var(--ink); padding: 0; height: 100%; }
+  .field-box input::placeholder { color: #bdbdbd; }
+  .go { flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-size: 17px; transition: transform 200ms var(--ease), background 200ms; }
+  .go:hover { transform: translateX(2px); } .go:active { transform: scale(.96); }
+  .go > * { grid-area: 1 / 1; }
+  .go .spin { width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,.3); border-top-color: #fff; display: none; animation: spin 700ms linear infinite; }
+  .checking .go .arrow { display: none; } .checking .go .spin { display: block; }
+  .keyrow { margin-top: 12px; display: grid; grid-template-rows: 0fr; transition: grid-template-rows 320ms var(--ease); }
+  .keyrow.on { grid-template-rows: 1fr; }
+  .keyrow > div { overflow: hidden; }
+  .key-box { height: 52px; border-radius: 14px; border: 1px solid var(--hair-2); background: var(--soft); display: flex; align-items: center; padding: 0 18px; font-size: 15px; }
+  .key-box input { flex: 1; border: 0; outline: 0; background: none; font: 14px var(--mono); color: var(--ink); }
+  .key-box:focus-within { border-color: #cfcfcf; background: #fff; }
+  .keynote { font-size: 13px; color: var(--grey); margin: 9px 4px 0; }
+  .keynote b { color: var(--ink); font-weight: 500; }
+  details.vaulthow { margin: 10px 4px 0; font-size: 13px; color: var(--grey); }
+  details.vaulthow summary { cursor: pointer; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--grey-2); list-style: none; }
+  details.vaulthow summary::-webkit-details-marker { display: none; }
+  .kv { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 7px 14px; margin: 12px 0 0; font-size: 13px; }
+  .kv dt { color: var(--grey); } .kv dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
+  .kv code, .vnote code { font: 12px var(--mono); background: var(--soft); border: 1px solid var(--hair-2); border-radius: 6px; padding: 1px 5px; }
+  .vsec { font-size: 12px; text-transform: none; color: var(--grey); margin: 20px 0 0; font-weight: 500; }
+  .vnote { font-size: 13px; color: var(--grey); margin: 16px 0 0; }
+  .vnote b { color: var(--ink); font-weight: 500; }
+  button.step { cursor: pointer; } button.step:hover { border-color: var(--pass); }
+  .under { margin-top: 16px; font-size: 13px; color: var(--grey); text-align: center; min-height: 20px; }
+  .under button { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--grey-2); }
+  .hint { color: var(--fail); }
+  .shake .field-box { animation: shake 360ms ease-in-out; }
+  .how { margin-top: 64px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; width: min(860px, 100%); font-size: 14px; color: var(--grey); }
+  .how b { display: block; color: var(--ink); font-weight: 500; margin-bottom: 4px; font-size: 15px; }
+
+  /* run */
+  .run { display: none; padding: 92px 28px 60px; max-width: 1440px; margin: 0 auto; }
+  .is-run .run { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 540px); gap: 40px; align-items: start; }
+  .headline { font-size: clamp(28px, 3.6vw, 46px); line-height: 1.05; letter-spacing: -.035em; font-weight: 600; margin: 0 0 10px; }
+  .headline em { font-style: normal; color: var(--pass); font-variant-numeric: tabular-nums; }
+  .status { color: var(--grey); margin: 0 0 22px; min-height: 22px; }
+  .status .err { color: var(--fail); }
+  .steps { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+  .step { font-size: 13px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--hair); color: var(--grey-2); transition: color 300ms, border-color 300ms, background 300ms; }
+  .step.on { color: var(--ink); border-color: #cfcfcf; }
+  .step.done { color: var(--pass); border-color: color-mix(in srgb, var(--pass) 35%, #fff); background: color-mix(in srgb, var(--pass) 6%, #fff); }
+  .counts { display: flex; gap: 26px; margin-bottom: 22px; font-size: 13px; color: var(--grey); }
+  .counts b { display: block; font: 600 26px/1.1 'Inter Tight'; letter-spacing: -.03em; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .counts .p b { color: var(--pass); } .counts .f b { color: var(--fail); }
+  .group { padding: 9px 0; border-top: 1px solid var(--hair-2); display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 14px; align-items: start; }
+  .group a { font: 12.5px/1.7 var(--mono); color: var(--grey); text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .group a:hover { color: var(--ink); }
+  .tiles { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tile { width: 20px; height: 20px; border-radius: 5px; background: #ededed; transition: transform 160ms var(--ease), background 400ms; animation: pop 420ms var(--ease) backwards; }
+  .tile:hover { transform: scale(1.22); }
+  .tile.pass { background: var(--pass); } .tile.fail { background: var(--fail); } .tile.warn { background: var(--warn); }
+  .tile.env { background: #fff; box-shadow: inset 0 0 0 2px var(--warn); }
+  .tile.live { background: var(--ink); animation: blink 900ms ease-in-out infinite; }
+  .tile.off { background: #fff; box-shadow: inset 0 0 0 1px var(--hair); }
+  .tile[aria-current="true"] { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .rest { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--hair-2); }
+  .rest p { color: var(--grey); font-size: 13px; margin: 0 0 12px; }
+  .rest .tile { width: 12px; height: 12px; border-radius: 3px; animation: none; }
+  .rest .tiles { gap: 3px; }
+
+  aside { position: sticky; top: 84px; max-height: calc(100dvh - 104px); overflow: auto; border: 1px solid var(--hair); border-radius: 16px; padding: 22px; box-shadow: 0 10px 30px -22px rgba(0,0,0,.18); }
+  .empty { color: var(--grey); padding: 30px 6px; text-align: center; }
+  .badge { display: inline-block; font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 999px; background: #f1f1f1; }
+  .badge.pass { background: color-mix(in srgb, var(--pass) 12%, #fff); color: var(--pass); }
+  .badge.fail { background: color-mix(in srgb, var(--fail) 10%, #fff); color: var(--fail); }
+  .badge.warn, .badge.env { background: color-mix(in srgb, var(--warn) 12%, #fff); color: #a56a00; }
+  .where { font-size: 19px; font-weight: 600; letter-spacing: -.02em; margin: 12px 0 2px; }
+  .crumb { font: 12.5px var(--mono); color: var(--grey); text-decoration: none; }
+  .why { margin: 12px 0 0; font-size: 14px; }
+  .facts { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 12px 0 14px; font: 12.5px var(--mono); color: var(--grey); }
+  .facts b { color: var(--ink); font-weight: 500; }
+  .tabs { display: flex; gap: 4px; margin-bottom: 10px; }
+  .tab { font-size: 13px; padding: 6px 12px; border-radius: 999px; color: var(--grey); }
+  .tab[aria-selected="true"] { background: var(--ink); color: #fff; }
+  pre { margin: 0; font: 12.5px/1.55 var(--mono); background: var(--soft); border: 1px solid var(--hair-2); border-radius: 12px; padding: 14px; overflow: auto; max-height: 50dvh; }
+  pre.out { white-space: pre-wrap; word-break: break-word; }
+  #player { border-radius: 12px; overflow: hidden; background: #121314; min-height: 100px; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes shake { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+  @keyframes pop { from { opacity: 0; transform: scale(.3); } }
+  @keyframes blink { 50% { opacity: .25; } }
+  @media (prefers-reduced-motion: reduce) { .tile, .tile.live, .go .spin { animation: none; } * { transition: none !important; } }
+  @media (max-width: 1000px) {
+    .is-run .run { grid-template-columns: 1fr; padding: 84px 16px 40px; }
+    aside { position: static; max-height: none; }
+    .group { grid-template-columns: 1fr; gap: 4px; }
+    .how { grid-template-columns: 1fr; gap: 20px; margin-top: 44px; }
+    .topbar { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/" aria-label="Doc Doctor home"><i></i>Doc Doctor</a>
+  <div class="runlabel" id="runlabel" aria-live="polite"></div>
+</header>
+
+<main class="landing" id="landing">
+  <h1>Do the examples in your docs still work?</h1>
+  <p class="sub">Enter your docs address. Every code sample runs on a fresh machine, on your own Boat account, while you watch.</p>
+  <form class="field" id="go" novalidate>
+    <label class="field-box">
+      <span class="prefix">https://</span>
+      <input id="url" name="url" type="text" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="docs.yourproduct.com" aria-label="Address of your docs" aria-describedby="hint">
+      <button class="go" type="submit" aria-label="Run my docs"><span class="arrow">→</span><span class="spin"></span></button>
+    </label>
+    <div class="keyrow" id="keyrow"><div>
+      <label class="key-box"><input id="key" type="password" autocomplete="off" spellcheck="false" placeholder="API key for your product" aria-label="API key for your product"></label>
+      <p class="keynote" id="keynote"></p>
+      <details class="vaulthow">
+        <summary>Where the key goes</summary>
+        <dl class="kv" id="keyfacts"></dl>
+      </details>
+    </div></div>
+  </form>
+  <div class="under" id="under"><span id="hint" class="hint" role="alert"></span><span id="keyask">Samples that call your API need a key. <button type="button" id="addkey">Add an API key</button></span></div>
+
+  <div class="how">
+    <div><b>Reads your docs</b>Every code block on every page, in whatever languages you publish.</div>
+    <div><b>Runs each sample</b>One new machine per page, on your Boat account. Your install commands first, then the sample, exactly as written.</div>
+    <div><b>Shows what broke</b>A recording of each run, so a failure is something you can watch, not a claim.</div>
+  </div>
+</main>
+
+<section class="run" id="run">
+  <div>
+    <h2 class="headline" id="headline">Reading your docs</h2>
+    <p class="status" id="status"></p>
+    <div class="steps" id="steps"></div>
+    <div class="counts" id="counts" hidden></div>
+    <div id="wall"></div>
+  </div>
+  <aside id="detail"><div class="empty">Each square is one code sample. Select one to watch it run.</div></aside>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/asciinema-player@3.8.0/dist/bundle/asciinema-player.min.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const GROUP = { pass: 'pass', fail: 'fail', timeout: 'fail', blocked: 'fail', plan: 'warn', environment: 'env', running: 'live', pending: 'wait' };
+const LABEL = { pass: 'Ran as published', fail: 'Broke', timeout: 'Timed out', blocked: 'Blocked by install', plan: 'Refused by the API', environment: 'Depends on the machine', running: 'Running now', pending: 'Waiting', skipped: 'Not run', 'over-budget': 'Over the limit', interfered: 'Not judged' };
+const group = (s) => GROUP[s.verdict] ?? 'off';
+const path = (u) => new URL(u).pathname.replace(/^\//, '') || 'index';
+let runId = null, current = null, player = null, timer = null;
+
+$('#addkey').onclick = () => { $('#keyrow').classList.add('on'); $('#keyask').hidden = true; setTimeout(() => $('#key').focus(), 200); };
+$('#go').onsubmit = async (e) => {
+  e.preventDefault();
+  const form = $('#go'), url = $('#url').value.trim();
+  $('#hint').textContent = '';
+  if (!url) { form.classList.add('shake'); setTimeout(() => form.classList.remove('shake'), 400); return; }
+  form.classList.add('checking');
+  try {
+    const r = await fetch('/api/runs', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ url, apiKey: $('#key').value || undefined }) });
+    const j = await r.json();
+    if (!r.ok) throw new Error(j.error);
+    $('#key').value = '';
+    history.pushState(null, '', '/r/' + j.runId);
+    watch(j.runId);
+  } catch (err) {
+    $('#hint').textContent = err.message + ' ';
+    form.classList.add('shake'); setTimeout(() => form.classList.remove('shake'), 400);
+  } finally { form.classList.remove('checking'); }
+};
+
+function watch(id) {
+  runId = id;
+  document.body.classList.add('is-run');
+  clearInterval(timer);
+  tick(); timer = setInterval(tick, 1500);
+}
+
+async function tick() {
+  const r = await fetch('/api/runs/' + runId).catch(() => null);
+  if (!r) return;
+  const d = await r.json();
+  if (!r.ok) { $('#headline').textContent = 'This run is not on this server'; $('#status').textContent = d.error; clearInterval(timer); return; }
+  render(d);
+  if (d.phase === 'done' || d.phase === 'error') clearInterval(timer);
+}
+
+function render(d) {
+  const host = new URL(d.site).host;
+  const S = d.samples, n = (g) => S.filter((s) => group(s) === g).length;
+  const judged = n('pass') + n('fail'), queued = n('wait') + n('live');
+  $('#runlabel').innerHTML = `<b>${esc(host)}</b>`;
+  const order = ['reading', 'vault', 'running', 'done'];
+  const at = order.indexOf(d.phase === 'error' ? 'reading' : d.phase);
+  const steps = [['reading', d.total ? `${d.total} samples on ${d.pages} pages` : 'Reading the docs'], d.vault || d.phase === 'vault' ? ['vault', 'Key stored in 1Claw'] : null,
+    ['running', d.machines ? `${d.machines} Boat machines` : 'Starting machines'], ['done', 'Finished']].filter(Boolean);
+  $('#steps').innerHTML = steps.map(([k, label]) => `<${k === 'vault' && d.vault ? 'button id="vaultbtn" title="Show the vault configuration"' : 'span'} class="step ${order.indexOf(k) < at || d.phase === 'done' ? 'done' : order.indexOf(k) === at ? 'on' : ''}">${esc(label)}${k === 'vault' && d.vault ? ' · view' : ''}</${k === 'vault' && d.vault ? 'button' : 'span'}>`).join('');
+
+  if (d.phase === 'error') { $('#headline').textContent = 'That did not work'; $('#status').innerHTML = `<span class="err">${esc(d.error)}</span>`; return; }
+  $('#headline').innerHTML = judged ? `<em>${n('pass')}</em> of ${judged} ran as published` : d.phase === 'reading' ? 'Reading your docs' : d.phase === 'vault' ? 'Putting your key in the vault' : 'Starting fresh machines';
+  const det = d.detected;
+  $('#status').textContent = d.phase === 'done'
+    ? `${host}. ${S.filter((s) => group(s) === 'off').length} samples were not run; select one to see why.`
+    : det?.apiHost ? `${host} calls ${det.apiHost}${det.envVar ? ` with ${det.envVar}` : ''}. ${queued ? queued + ' samples to go.' : ''}` : host;
+  if (S.length) {
+    $('#counts').hidden = false;
+    $('#counts').innerHTML = `<span class="p"><b>${n('pass')}</b>ran as published</span><span class="f"><b>${n('fail')}</b>broke</span><span><b>${n('warn') + n('env')}</b>not the sample's fault</span><span><b>${queued}</b>still to run</span>`;
+  }
+  const pages = new Map();
+  for (const s of S) (pages.get(s.url) ?? pages.set(s.url, []).get(s.url)).push(s);
+  const rank = { fail: 0, warn: 1, env: 2, live: 3, pass: 4, wait: 5, off: 6 };
+  const tile = (s) => `<button class="tile ${group(s)}" data-id="${s.id}" aria-current="${s.id === current}" title="${esc(LABEL[s.verdict] ?? s.verdict)} · ${esc(s.lang)}${s.heading ? ' · ' + esc(s.heading) : ''}" aria-label="${esc(LABEL[s.verdict] ?? s.verdict)}, ${esc(s.lang)}, ${esc(s.heading)}"></button>`;
+  const active = [...pages.entries()].filter(([, l]) => l.some((s) => group(s) !== 'off'));
+  const idle = [...pages.values()].filter((l) => l.every((s) => group(s) === 'off')).flat();
+  const html = active.map(([url, l]) => `<div class="group"><a href="${esc(url)}" target="_blank" rel="noopener">${esc(path(url))}</a><div class="tiles">${l.sort((a, b) => rank[group(a)] - rank[group(b)]).map(tile).join('')}</div></div>`).join('')
+    + (idle.length ? `<div class="rest"><p>${idle.length} more samples were not run: example output, fragments, or samples that need a value only you have.</p><div class="tiles">${idle.map(tile).join('')}</div></div>` : '');
+  const key = S.map((s) => s.id + s.verdict).join('|');
+  if ($('#wall').dataset.key !== key) { $('#wall').innerHTML = html; $('#wall').dataset.key = key; }
+}
+
+async function showVault() {
+  current = null;
+  for (const x of document.querySelectorAll('.tile')) x.setAttribute('aria-current', 'false');
+  player?.dispose?.(); player = null;
+  $('#detail').innerHTML = '<div class="empty">Asking 1Claw for the configuration.</div>';
+  const v = await (await fetch(`/api/runs/${runId}/vault`)).json();
+  if (!v.available) { $('#detail').innerHTML = `<div class="empty">${esc(v.reason ?? v.error)}</div>`; return; }
+  const b = v.binding, a = v.agent, day = (t) => (t ? new Date(t).toISOString().slice(0, 16).replace('T', ' ') + ' UTC' : 'not set');
+  const code = (x) => `<code>${esc(x)}</code>`;
+  $('#detail').innerHTML = `<span class="badge pass">Read live from 1Claw</span>
+    <div class="where">How your key is held</div>
+    <p class="why">This is the configuration 1Claw reports right now. The key itself is not shown because 1Claw never returns it.</p>
+    <p class="vsec">The binding, where the key lives</p>
+    <dl class="kv">
+      <dt>Name</dt><dd>${code(b.name)}</dd>
+      <dt>Type</dt><dd>${esc(b.type)} ${b.active ? '' : '(inactive)'}</dd>
+      <dt>Calls go to</dt><dd>${code(b.baseUrl)}</dd>
+      <dt>Hosts allowed</dt><dd>${b.allowedHosts.map(code).join(' ') || 'none'}</dd>
+      <dt>Key sent as</dt><dd>${code(b.sentAs)}</dd>
+      <dt>Key stored</dt><dd>${b.credentialSet ? 'Yes, write-only' : 'No'}</dd>
+      <dt>Last changed</dt><dd>${day(b.updatedAt)}</dd>
+    </dl>
+    <p class="vsec">The agent, what the test machines sign in as</p>
+    <dl class="kv">
+      <dt>Name</dt><dd>${code(a.name)}</dd>
+      <dt>Hosts allowed</dt><dd>${a.allowedHosts.map(code).join(' ') || 'none'}</dd>
+      <dt>Binding types</dt><dd>${a.allowedBindingTypes.map(code).join(' ') || 'any'}</dd>
+      <dt>Its key expires</dt><dd>${day(a.keyExpiresAt)}</dd>
+      <dt>Can sign transactions</dt><dd>${a.canSign ? 'Yes' : 'No'}</dd>
+    </dl>
+    <p class="vnote"><b>What this means.</b> A test machine can ask 1Claw to call ${code(b.allowedHosts[0] ?? b.baseUrl)} and gets the response. It cannot read the key or call any other host. The binding stays in your 1Claw account until you delete it.</p>`;
+}
+
+document.body.addEventListener('click', async (e) => {
+  if (e.target.closest('#vaultbtn')) return showVault();
+  const t = e.target.closest('.tile'); if (!t) return;
+  current = t.dataset.id;
+  for (const x of document.querySelectorAll('.tile')) x.setAttribute('aria-current', x.dataset.id === current);
+  const s = await (await fetch(`/api/runs/${runId}/sample/${current}`)).json();
+  const g = group(s);
+  const facts = [['language', s.runtime ?? s.lang], s.ms != null && ['took', (s.ms / 1000).toFixed(1) + ' s'], s.exit != null && ['exit', s.exit], s.http?.length && ['http', s.http.join(' ')]].filter(Boolean);
+  $('#detail').innerHTML = `<span class="badge ${g}">${esc(LABEL[s.verdict] ?? s.verdict)}</span>
+    <div class="where">${esc(s.heading || s.page)}</div>
+    <a class="crumb" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(path(s.url))}</a>
+    ${s.reason ? `<p class="why">${esc(s.reason)}</p>` : ''}
+    <div class="facts">${facts.map(([k, v]) => `<span>${k} <b>${esc(v)}</b></span>`).join('')}</div>
+    <div class="tabs" role="tablist">${s.cast ? '<button class="tab" data-t="rec">Recording</button>' : ''}<button class="tab" data-t="code">Sample</button>${s.tail ? '<button class="tab" data-t="out">Output</button>' : ''}</div>
+    <div id="pane"></div>`;
+  const show = (tab) => {
+    for (const b of document.querySelectorAll('.tab')) b.setAttribute('aria-selected', b.dataset.t === tab);
+    player?.dispose?.(); player = null;
+    if (tab === 'code') $('#pane').innerHTML = `<pre>${esc(s.code)}</pre>`;
+    else if (tab === 'out') $('#pane').innerHTML = `<pre class="out">${esc(s.tail)}</pre>`;
+    else { $('#pane').innerHTML = '<div id="player"></div>'; player = AsciinemaPlayer.create({ data: s.cast }, $('#player'), { autoPlay: true, idleTimeLimit: 1.5, fit: 'width', rows: 20, terminalFontFamily: 'JetBrains Mono, monospace' }); }
+  };
+  document.querySelector('.tabs').onclick = (ev) => { const b = ev.target.closest('.tab'); if (b) show(b.dataset.t); };
+  show(s.cast ? 'rec' : 'code');
+});
+
+fetch('/api/config').then((r) => r.json()).then((c) => {
+  const row = (k, v) => `<dt>${k}</dt><dd>${v}</dd>`;
+  if (c.vault) {
+    $('#keynote').innerHTML = 'This copy runs with <b>your 1Claw vault</b>. The key is stored there as a binding, and the test machines call your API through it without ever holding the key.';
+    $('#keyfacts').innerHTML = row('Where it is kept', 'A write-only binding in your own 1Claw account, limited to your API host. 1Claw does not return it to anyone.')
+      + row('What the machines hold', 'A scoped agent key and a one-run token. Enough to ask the vault to call your API, not enough to read the key.')
+      + row('Why bother', 'Samples install third-party packages before they run. With the vault, a bad package has no key to steal.')
+      + row('What you can check', 'After the run starts, open "Key stored in 1Claw" to see the live configuration.');
+  } else {
+    $('#keynote').innerHTML = 'The key <b>stays on this machine</b> and is copied into the test machines for the run. Nothing is sent to anyone but your own API. At most 40 API samples run; samples that delete anything never do.';
+    $('#keyfacts').innerHTML = row('Where it is kept', 'In this process, on your computer, until you stop it. During a run it is also in a private file in the run folder, which is emptied when the run ends. It is removed from every recording.')
+      + row('What the machines hold', 'The key itself, as an environment variable, for as long as the machine lives. Each machine is deleted when its page is done.')
+      + row('A stricter option', 'Start with <code>doc-doctor serve --vault</code> to keep the key in your own 1Claw vault, so the machines never hold it. Needs 1Claw Pro.');
+  }
+});
+const m = location.pathname.match(/^\/r\/([\w-]+)/);
+if (m) watch(m[1]);
+</script>
+</body>
+</html>

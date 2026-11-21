@@ -1,0 +1,842 @@
+[
+ {
+  "url": "https://docs.context.dev/account/api-keys",
+  "title": "API keys"
+ },
+ {
+  "url": "https://docs.context.dev/account/billing",
+  "title": "Plans and billing"
+ },
+ {
+  "url": "https://docs.context.dev/account/credits",
+  "title": "Credits and pricing"
+ },
+ {
+  "url": "https://docs.context.dev/account/team",
+  "title": "Team access"
+ },
+ {
+  "url": "https://docs.context.dev/agent-quickstart",
+  "title": "Agent quickstart"
+ },
+ {
+  "url": "https://docs.context.dev/answers/answer-shape",
+  "title": "Answer shape"
+ },
+ {
+  "url": "https://docs.context.dev/answers/overview",
+  "title": "Answers"
+ },
+ {
+  "url": "https://docs.context.dev/answers/sources-and-deadlines",
+  "title": "Sources and deadlines"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/access-policies/create",
+  "title": "Create an access policy"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/access-policies/delete",
+  "title": "Delete an access policy"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/access-policies/list",
+  "title": "List access policies"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/access-policies/retrieve",
+  "title": "Retrieve an access policy"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/access-policies/update",
+  "title": "Update an access policy"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/batches/cancel",
+  "title": "Cancel a batch"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/batches/delete",
+  "title": "Delete a batch"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/batches/list",
+  "title": "List batches"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/batches/results",
+  "title": "List batch results"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/batches/retrieve",
+  "title": "Retrieve a batch"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/batches/submit",
+  "title": "Submit a batch"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/batches/webhooks/cancelled",
+  "title": "Receive batch.cancelled events"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/batches/webhooks/completed",
+  "title": "Receive batch.completed events"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/batches/webhooks/failed",
+  "title": "Receive batch.failed events"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/brand-intelligence/brand",
+  "title": "Retrieve a brand"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/brand-intelligence/search",
+  "title": "Auto-complete Brand"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/brand-intelligence/styleguide",
+  "title": "Extract a styleguide"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/browser-profiles/list",
+  "title": "List browser profiles"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/company/search",
+  "title": "Search companies"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/feedback/submit",
+  "title": "Submit agent feedback"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/logs/list",
+  "title": "List request logs"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/logs/retrieve",
+  "title": "Retrieve a request log"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/account-changes",
+  "title": "List changes for all monitors"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/account-runs",
+  "title": "List runs for all monitors"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/change",
+  "title": "Retrieve a monitor change"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/changes",
+  "title": "List monitor changes"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/create",
+  "title": "Create a monitor"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/credit-usage",
+  "title": "Retrieve monitor credit usage"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/delete",
+  "title": "Delete a monitor"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/limits",
+  "title": "Retrieve monitor limits"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/list",
+  "title": "List monitors"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/retrieve",
+  "title": "Retrieve a monitor"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/retrieve-run",
+  "title": "Retrieve a monitor run"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/rotate-webhook-secret",
+  "title": "Rotate a monitor webhook secret"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/run",
+  "title": "Run a monitor now"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/runs",
+  "title": "List monitor runs"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/update",
+  "title": "Update a monitor"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/webhook-payload",
+  "title": "Receive change.detected events"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/monitors/webhook-run-completed",
+  "title": "Receive run.completed events"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/news/search",
+  "title": "Search news"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/people/enrich",
+  "title": "Enrich a person"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/people/search",
+  "title": "Search people"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/usage/history",
+  "title": "Retrieve usage history"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/usage/retrieve",
+  "title": "Retrieve credit usage"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/utility/parse",
+  "title": "Parse a file"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/utility/prefetch",
+  "title": "Prefetch brand data"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/web-extraction/answers",
+  "title": "Answer questions"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/web-scraping/crawl",
+  "title": "Crawl a website"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/web-scraping/map",
+  "title": "Map URLs"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/web-scraping/scrape",
+  "title": "Scrape Anything"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/web-scraping/search",
+  "title": "Search the web"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/webhooks/attempts",
+  "title": "List webhook delivery attempts"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/webhooks/list",
+  "title": "List webhook deliveries"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/webhooks/retrieve",
+  "title": "Retrieve a webhook delivery"
+ },
+ {
+  "url": "https://docs.context.dev/api-reference/webhooks/retry",
+  "title": "Retry a webhook delivery"
+ },
+ {
+  "url": "https://docs.context.dev/batches/limits-and-errors",
+  "title": "Cancel, limits, and errors"
+ },
+ {
+  "url": "https://docs.context.dev/batches/overview",
+  "title": "Batches"
+ },
+ {
+  "url": "https://docs.context.dev/batches/results",
+  "title": "Status and results"
+ },
+ {
+  "url": "https://docs.context.dev/batches/submit",
+  "title": "Submit a batch"
+ },
+ {
+  "url": "https://docs.context.dev/brand/logo-link",
+  "title": "Logo Link"
+ },
+ {
+  "url": "https://docs.context.dev/brand/lookup-by-domain",
+  "title": "Lookup by domain"
+ },
+ {
+  "url": "https://docs.context.dev/brand/lookup-by-email",
+  "title": "Lookup by email"
+ },
+ {
+  "url": "https://docs.context.dev/brand/lookup-by-name",
+  "title": "Lookup by name"
+ },
+ {
+  "url": "https://docs.context.dev/brand/lookup-by-ticker",
+  "title": "Lookup by ticker"
+ },
+ {
+  "url": "https://docs.context.dev/brand/lookup-by-transaction",
+  "title": "Lookup by transaction"
+ },
+ {
+  "url": "https://docs.context.dev/brand/lookup-by-url",
+  "title": "Lookup by page URL"
+ },
+ {
+  "url": "https://docs.context.dev/brand/overview",
+  "title": "Brand"
+ },
+ {
+  "url": "https://docs.context.dev/brand/prefetching",
+  "title": "Prefetch"
+ },
+ {
+  "url": "https://docs.context.dev/brand/search",
+  "title": "Auto-complete Brand"
+ },
+ {
+  "url": "https://docs.context.dev/brand/styleguide",
+  "title": "Styleguide"
+ },
+ {
+  "url": "https://docs.context.dev/changelog",
+  "title": "Changelog"
+ },
+ {
+  "url": "https://docs.context.dev/classification/eic",
+  "title": "Industry classification"
+ },
+ {
+  "url": "https://docs.context.dev/companies/search",
+  "title": "Search companies"
+ },
+ {
+  "url": "https://docs.context.dev/crawl/async",
+  "title": "Large crawls"
+ },
+ {
+  "url": "https://docs.context.dev/crawl/overview",
+  "title": "Crawl"
+ },
+ {
+  "url": "https://docs.context.dev/crawl/page-content",
+  "title": "Page content"
+ },
+ {
+  "url": "https://docs.context.dev/crawl/page-metadata",
+  "title": "Page metadata"
+ },
+ {
+  "url": "https://docs.context.dev/crawl/scope",
+  "title": "Scope and limits"
+ },
+ {
+  "url": "https://docs.context.dev/default-search-scrape",
+  "title": "Make Context your default search and scrape tool"
+ },
+ {
+  "url": "https://docs.context.dev/install-cli",
+  "title": "CLI"
+ },
+ {
+  "url": "https://docs.context.dev/install-mcp",
+  "title": "MCP server"
+ },
+ {
+  "url": "https://docs.context.dev/install-skill",
+  "title": "Agent skill"
+ },
+ {
+  "url": "https://docs.context.dev/integrations/chatgpt-plugin",
+  "title": "ChatGPT"
+ },
+ {
+  "url": "https://docs.context.dev/integrations/claude-connector",
+  "title": "Claude"
+ },
+ {
+  "url": "https://docs.context.dev/integrations/composio",
+  "title": "Composio"
+ },
+ {
+  "url": "https://docs.context.dev/integrations/convex",
+  "title": "Convex"
+ },
+ {
+  "url": "https://docs.context.dev/integrations/cursor-plugin",
+  "title": "Cursor"
+ },
+ {
+  "url": "https://docs.context.dev/integrations/eve",
+  "title": "Eve"
+ },
+ {
+  "url": "https://docs.context.dev/integrations/gemini-cli",
+  "title": "Gemini CLI"
+ },
+ {
+  "url": "https://docs.context.dev/integrations/langchain",
+  "title": "LangChain"
+ },
+ {
+  "url": "https://docs.context.dev/integrations/neon",
+  "title": "Neon"
+ },
+ {
+  "url": "https://docs.context.dev/integrations/openclaw",
+  "title": "OpenClaw"
+ },
+ {
+  "url": "https://docs.context.dev/integrations/replit",
+  "title": "Replit"
+ },
+ {
+  "url": "https://docs.context.dev/integrations/smithery",
+  "title": "Smithery"
+ },
+ {
+  "url": "https://docs.context.dev/integrations/swytchcode",
+  "title": "Swytchcode"
+ },
+ {
+  "url": "https://docs.context.dev/introduction",
+  "title": "Context.dev: the web data API"
+ },
+ {
+  "url": "https://docs.context.dev/map/filter-and-search",
+  "title": "Filter and search"
+ },
+ {
+  "url": "https://docs.context.dev/map/overview",
+  "title": "Map URLs"
+ },
+ {
+  "url": "https://docs.context.dev/monitors/limits-and-errors",
+  "title": "Limits and errors"
+ },
+ {
+  "url": "https://docs.context.dev/monitors/overview",
+  "title": "Monitors"
+ },
+ {
+  "url": "https://docs.context.dev/monitors/runs-and-changes",
+  "title": "Runs and changes"
+ },
+ {
+  "url": "https://docs.context.dev/monitors/schedules",
+  "title": "Monitor schedules"
+ },
+ {
+  "url": "https://docs.context.dev/monitors/targets",
+  "title": "Monitor targets"
+ },
+ {
+  "url": "https://docs.context.dev/monitors/targets/extract",
+  "title": "Extract monitors"
+ },
+ {
+  "url": "https://docs.context.dev/monitors/targets/page",
+  "title": "Page monitors"
+ },
+ {
+  "url": "https://docs.context.dev/monitors/targets/search",
+  "title": "Search monitors"
+ },
+ {
+  "url": "https://docs.context.dev/monitors/targets/sitemap",
+  "title": "Sitemap monitors"
+ },
+ {
+  "url": "https://docs.context.dev/monitors/webhooks",
+  "title": "Monitor events and alerts"
+ },
+ {
+  "url": "https://docs.context.dev/news/filter-and-sort",
+  "title": "Filter and sort"
+ },
+ {
+  "url": "https://docs.context.dev/news/overview",
+  "title": "News"
+ },
+ {
+  "url": "https://docs.context.dev/news/paginate",
+  "title": "Paginate news"
+ },
+ {
+  "url": "https://docs.context.dev/nocode/make",
+  "title": "Make"
+ },
+ {
+  "url": "https://docs.context.dev/nocode/spreadsheets",
+  "title": "Spreadsheets"
+ },
+ {
+  "url": "https://docs.context.dev/nocode/zapier",
+  "title": "Zapier"
+ },
+ {
+  "url": "https://docs.context.dev/optimization/access-policies",
+  "title": "Access policies"
+ },
+ {
+  "url": "https://docs.context.dev/optimization/agent-feedback",
+  "title": "Agent feedback"
+ },
+ {
+  "url": "https://docs.context.dev/optimization/best-practices",
+  "title": "Production checklist"
+ },
+ {
+  "url": "https://docs.context.dev/optimization/rate-limits",
+  "title": "Rate limits"
+ },
+ {
+  "url": "https://docs.context.dev/optimization/responsible-use",
+  "title": "Responsible use"
+ },
+ {
+  "url": "https://docs.context.dev/optimization/timeouts",
+  "title": "Timeouts"
+ },
+ {
+  "url": "https://docs.context.dev/optimization/troubleshooting",
+  "title": "Troubleshooting"
+ },
+ {
+  "url": "https://docs.context.dev/optimization/trust",
+  "title": "Security and API stability"
+ },
+ {
+  "url": "https://docs.context.dev/optimization/usage-and-logs",
+  "title": "Usage and request logs"
+ },
+ {
+  "url": "https://docs.context.dev/optimization/zero-data-retention",
+  "title": "Zero data retention"
+ },
+ {
+  "url": "https://docs.context.dev/parse/formats",
+  "title": "Supported formats"
+ },
+ {
+  "url": "https://docs.context.dev/parse/overview",
+  "title": "Parse documents"
+ },
+ {
+  "url": "https://docs.context.dev/parse/pdfs-and-ocr",
+  "title": "PDFs and OCR"
+ },
+ {
+  "url": "https://docs.context.dev/people/enrich",
+  "title": "Enrich a person"
+ },
+ {
+  "url": "https://docs.context.dev/people/search",
+  "title": "Search people"
+ },
+ {
+  "url": "https://docs.context.dev/quickstart",
+  "title": "Quickstart"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/browser-actions",
+  "title": "Browser actions"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/browser-profiles",
+  "title": "Browser profiles"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/bytes",
+  "title": "Bytes"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/content-filtering",
+  "title": "Content filtering"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/freshness-and-caching",
+  "title": "Freshness and caching"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/highlights",
+  "title": "Highlights"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/html",
+  "title": "HTML"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/images",
+  "title": "Images"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/json",
+  "title": "JSON"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/location-and-headers",
+  "title": "Location and headers"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/markdown",
+  "title": "Markdown"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/overview",
+  "title": "Scrape"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/page-metadata",
+  "title": "Page metadata"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/parse-fields",
+  "title": "Custom parser"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/pdfs-and-documents",
+  "title": "PDFs and documents"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers",
+  "title": "Pre-built parsers"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/app-store",
+  "title": "App Store"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/app-store-reviews",
+  "title": "App Store reviews"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/emails",
+  "title": "Emails"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/g2-reviews",
+  "title": "G2 reviews"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/google-maps",
+  "title": "Google Maps"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/google-maps-reviews",
+  "title": "Google Maps reviews"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/google-play",
+  "title": "Google Play"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/google-play-reviews",
+  "title": "Google Play reviews"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/instagram-feed",
+  "title": "Instagram feed"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/instagram-post",
+  "title": "Instagram post"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/instagram-profile",
+  "title": "Instagram profile"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/links",
+  "title": "Links"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/phone-numbers",
+  "title": "Phone numbers"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/reddit-post",
+  "title": "Reddit post"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/reddit-search",
+  "title": "Reddit search"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/reddit-subreddit",
+  "title": "Reddit subreddit"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/reddit-user",
+  "title": "Reddit user"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/tiktok-comments",
+  "title": "TikTok comments"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/tiktok-feed",
+  "title": "TikTok feed"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/tiktok-followers",
+  "title": "TikTok followers and following"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/tiktok-profile",
+  "title": "TikTok profile"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/tiktok-user-search",
+  "title": "TikTok user search"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/tiktok-video",
+  "title": "TikTok video"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/tripadvisor-reviews",
+  "title": "Tripadvisor reviews"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/yelp-reviews",
+  "title": "Yelp reviews"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/prebuilt-parsers/yelp-search",
+  "title": "Yelp search"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/product",
+  "title": "Product"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/screenshot",
+  "title": "Screenshot"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/timeouts-and-errors",
+  "title": "Timeouts, limits, and errors"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/waiting-and-rendering",
+  "title": "Waiting and rendering"
+ },
+ {
+  "url": "https://docs.context.dev/scrape/youtube",
+  "title": "YouTube videos"
+ },
+ {
+  "url": "https://docs.context.dev/sdks",
+  "title": "SDKs"
+ },
+ {
+  "url": "https://docs.context.dev/sdks/go",
+  "title": "Go"
+ },
+ {
+  "url": "https://docs.context.dev/sdks/php",
+  "title": "PHP"
+ },
+ {
+  "url": "https://docs.context.dev/sdks/python",
+  "title": "Python"
+ },
+ {
+  "url": "https://docs.context.dev/sdks/ruby",
+  "title": "Ruby"
+ },
+ {
+  "url": "https://docs.context.dev/sdks/typescript",
+  "title": "JavaScript and TypeScript"
+ },
+ {
+  "url": "https://docs.context.dev/search/filters",
+  "title": "Filter results"
+ },
+ {
+  "url": "https://docs.context.dev/search/overview",
+  "title": "Search"
+ },
+ {
+  "url": "https://docs.context.dev/search/page-content",
+  "title": "Result content"
+ },
+ {
+  "url": "https://docs.context.dev/use-cases/branded-campaign-assets",
+  "title": "Generate campaign assets"
+ },
+ {
+  "url": "https://docs.context.dev/use-cases/branded-documents",
+  "title": "Branded content from brand context"
+ },
+ {
+  "url": "https://docs.context.dev/use-cases/build-rag-from-websites",
+  "title": "Website and PDF RAG"
+ },
+ {
+  "url": "https://docs.context.dev/use-cases/company-directory-logos",
+  "title": "Build a company directory with logos"
+ },
+ {
+  "url": "https://docs.context.dev/use-cases/competitor-research",
+  "title": "Build a sourced competitor comparison"
+ },
+ {
+  "url": "https://docs.context.dev/use-cases/custom-email-templates",
+  "title": "Build branded emails"
+ },
+ {
+  "url": "https://docs.context.dev/use-cases/faster-onboarding-flows",
+  "title": "Prefill and personalize onboarding"
+ },
+ {
+  "url": "https://docs.context.dev/use-cases/generate-branded-websites",
+  "title": "Generate a website from brand context"
+ },
+ {
+  "url": "https://docs.context.dev/use-cases/lead-enrichment",
+  "title": "Enrich signups and leads"
+ },
+ {
+  "url": "https://docs.context.dev/use-cases/live-web-context-for-agents",
+  "title": "Give an AI agent live web context"
+ },
+ {
+  "url": "https://docs.context.dev/use-cases/merchant-transaction-feeds",
+  "title": "Build a recognizable merchant feed"
+ },
+ {
+  "url": "https://docs.context.dev/use-cases/personalized-sales-demos",
+  "title": "Create a personalized sales demo"
+ },
+ {
+  "url": "https://docs.context.dev/use-cases/research-with-pdfs",
+  "title": "Research papers and PDFs with citations"
+ },
+ {
+  "url": "https://docs.context.dev/use-cases/structured-web-datasets",
+  "title": "Datasets and comparisons"
+ },
+ {
+  "url": "https://docs.context.dev/use-cases/website-change-digests",
+  "title": "Turn website changes into a useful digest"
+ },
+ {
+  "url": "https://docs.context.dev/webhooks",
+  "title": "Webhooks"
+ }
+]
